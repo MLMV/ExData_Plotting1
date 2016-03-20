@@ -185,6 +185,32 @@ sub3 <- subset(transdata, metering == "Sub_metering_3")
 
 # Plotting ----------------------------------------------------------------
 
+# Create the framework for the plots
+par(mfrow = c(2, 2), mar = c(4, 4, 4, 4))
+
+
+# Create plot 1
+
+with(subdata, plot(
+      DateTime, 
+      Global_active_power, 
+      type = "l",
+      xlab = "",
+      ylab = "Global Active Power (kilowatts)"
+)
+)
+
+# Create plot 2
+
+with(subdata, plot(
+      DateTime, 
+      Voltage, 
+      type = "l",
+      xlab = "datetime",
+      ylab = "Voltage"
+)
+)
+
 # Create plot 3
 
 with(transdata,
@@ -235,7 +261,19 @@ legend(
       legend = c("Sub_metering_1", "Sub_metering_2", "Sub_metering_3")
 )
 
+# Create plot 4
 
-dev.copy(png, file = "plot3.png")
+with(subdata, plot(
+      DateTime, 
+      Global_reactive_power, 
+      type = "l",
+      xlab = "datetime",
+      ylab = "Global_reactive_power"
+      )
+     )
+
+
+
+dev.copy(png, file = "plot4.png")
 dev.off()
 
